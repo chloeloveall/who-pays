@@ -1,0 +1,12 @@
+{
+  "name": "who-pays",
+  "displayName": "who-pays",
+  "expo": {
+    "name": "who-pays",
+    "slug": "who-pays",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
