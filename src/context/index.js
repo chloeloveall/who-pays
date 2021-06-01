@@ -24,6 +24,17 @@ class MyProvider extends Component {
     this.setState({ players: newArray });
   }
 
+  nextHandler = () => {
+    const {players} = this.state;
+    if(players.length < 2) {
+      alert('error');
+    } else {
+      this.setState({
+        stage: 2
+      })
+    }
+  }
+
   render() {
     return (
       <>
@@ -31,6 +42,7 @@ class MyProvider extends Component {
           state: this.state,
           addPlayer: this.addPlayerHandler,
           removePlayer: this.removePlayerHandler,
+          next: this.nextHandler
         }}>
           {this.props.children}
         </MyContext.Provider>
