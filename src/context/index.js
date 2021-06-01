@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Toast from 'react-native-toast-message';
 
 const MyContext = React.createContext();
 
@@ -27,12 +28,26 @@ class MyProvider extends Component {
   nextHandler = () => {
     const {players} = this.state;
     if(players.length < 2) {
-      alert('error');
+      Toast.show({
+        type: 'error',
+        position: 'bottom',
+        text1: 'Sorry',
+        text2: 'You need at least two players'
+      });
     } else {
       this.setState({
         stage: 2
+      }, ()=> {
+        this.generateLoser()
       })
     }
+  }
+
+  generateLoser = () => {
+    const {players} = this.state;
+    this.setState({
+      result: players[Math.floor(Math.random() * players.length)]
+    })
   }
 
   render() {
