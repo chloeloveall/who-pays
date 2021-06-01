@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { StyleSheet } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Input, Button, Text } from 'react-native-elements';
@@ -42,6 +43,7 @@ const StageOne = () => {
               value={values.player}
             />
             <Button 
+              buttonStyle={styles.button}
               title='Add player'
               onPress={handleSubmit}
             />
@@ -51,5 +53,12 @@ const StageOne = () => {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: '#DB3EB1',
+    marginTop: 20
+  }
+})
 
 export default StageOne;
