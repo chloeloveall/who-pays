@@ -1,12 +1,28 @@
 import React, { useContext } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { Input, Button, Text } from 'react-native-elements';
+import { Input, Button, ListItem, Text } from 'react-native-elements';
 import { MyContext } from '../context';
 
 const StageOne = () => {
   const context = useContext(MyContext);
+
+  const renderPlayers = () => (
+    context.state.players.map((item, idx) => (
+      <ListItem
+        key={idx}
+        bottomDivider
+        style={{ width: '100%' }}
+        onLongPress={() => context.removePlayer(idx)}
+      >
+        <ListItem.Chevron />
+        <ListItem.Content>
+          <ListItem.Title>{item}</ListItem.Title>
+        </ListItem.Content>
+      </ListItem>
+    ))
+  )
 
   return (
     <>
@@ -50,6 +66,17 @@ const StageOne = () => {
           </>
         )}
       </Formik>
+
+      <View style={{padding: 20, width: '100%'}}>
+        {
+          context.state.players && context.state.players.length > 0 ?
+          <>
+            <Text>List of Players</Text>
+            {renderPlayers()}
+          </>
+          : null
+        }
+      </View>
     </>
   );
 }
