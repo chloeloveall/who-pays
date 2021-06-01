@@ -73,6 +73,11 @@ const StageOne = () => {
           <>
             <Text>List of Players</Text>
             {renderPlayers()}
+            <Button 
+              buttonStyle={styles.button}
+              title='Find out who pays!'
+              onPress={() => context.next()}
+            />
           </>
           : null
         }
