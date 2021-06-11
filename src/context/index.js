@@ -16,7 +16,7 @@ class MyProvider extends Component {
         ...prevState.players,
         name
       ]
-    }))
+    }));
   }
 
   removePlayerHandler = (idx) => {
@@ -36,10 +36,11 @@ class MyProvider extends Component {
       });
     } else {
       this.setState({
+        // stage: !this.state
         stage: 2
       }, ()=> {
         this.generateLoser()
-      })
+      });
     }
   }
 
@@ -47,7 +48,15 @@ class MyProvider extends Component {
     const {players} = this.state;
     this.setState({
       result: players[Math.floor(Math.random() * players.length)]
-    })
+    });
+  }
+
+  resetGame = () => {
+    this.setState({
+      stage:1,
+      players:[],
+      result:''
+    });
   }
 
   render() {
@@ -57,7 +66,9 @@ class MyProvider extends Component {
           state: this.state,
           addPlayer: this.addPlayerHandler,
           removePlayer: this.removePlayerHandler,
-          next: this.nextHandler
+          next: this.nextHandler,
+          getNewLoser: this.generateLoser,
+          resetGame: this.resetGame
         }}>
           {this.props.children}
         </MyContext.Provider>
