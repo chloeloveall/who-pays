@@ -41,7 +41,10 @@ const StageOne = () => {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World!</Text>
+            <Text h1 style={styles.modalText}>Welcome</Text>
+            <Text style={[styles.modalText]}>
+              Simply add two or more players and select "Find Out Who Pays" to generate a loser - who's on the hook for the bill tonight!
+            </Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}
@@ -155,11 +158,6 @@ const styles = StyleSheet.create({
     width: '80%',
     height: '50%'
   },
-  // button: {
-  //   borderRadius: 20,
-  //   padding: 10,
-  //   elevation: 2
-  // },
   buttonOpen: {
     backgroundColor: "#F194FF",
   },
@@ -170,7 +168,8 @@ const styles = StyleSheet.create({
   },
   modalText: {
     marginBottom: 15,
-    textAlign: "center"
+    textAlign: "center",
+    lineHeight: 50
   }
 })
 
